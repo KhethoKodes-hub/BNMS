@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNMS OOR PRO · Contact Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blk: #060608;
+  --carbon: #0f0f12;
+  --steel: #1a1a22;
+  --iron: #242430;
+  --ore: #f97316;
+  --ore-glow: rgba(249,115,22,0.35);
+  --ore-dim: rgba(249,115,22,0.10);
+  --white: #f4f2ee;
+  --muted: #8a8a96;
+  --plum: #4a1770;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--blk);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.45;mix-blend-mode:overlay;}
+
+/* CURSOR */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);}
+.cursor-dot{width:6px;height:6px;background:var(--ore);border-radius:50%;}
+.cursor-ring{width:36px;height:36px;border:1.5px solid rgba(249,115,22,.5);border-radius:50%;transition:width .2s,height .2s,border-color .2s;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.4rem 6vw;display:flex;justify-content:space-between;align-items:center;transition:background .4s,padding .3s;}
+nav.scrolled{background:rgba(6,6,8,.88);backdrop-filter:blur(18px);padding:.9rem 6vw;border-bottom:1px solid rgba(249,115,22,.15);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.1em;}
+.nav-logo span{color:var(--ore);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:rgba(244,242,238,.6);transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ore);transition:width .25s;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--ore);}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ore);border:1px solid rgba(249,115,22,.5);padding:.5rem 1.2rem;text-decoration:none;transition:background .2s,color .2s;}
+.nav-cta:hover{background:var(--ore);color:var(--blk);}
+
+/* TICKER */
+.ticker-wrap{background:var(--ore);overflow:hidden;padding:.6rem 0;}
+.ticker-inner{display:flex;animation:ticker 24s linear infinite;white-space:nowrap;}
+.ticker-inner span{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blk);font-weight:700;padding:0 2.5rem;}
+.ticker-inner span::before{content:'◆  ';}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ===== PAGE HERO ===== */
+#page-hero{position:relative;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.page-hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(175deg,rgba(6,6,8,.05) 0%,rgba(6,6,8,.5) 40%,rgba(6,6,8,.97) 100%),
+    url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=80&fit=crop') center/cover no-repeat;
+  transform:scale(1.04);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1.04);}to{transform:scale(1.11) translateX(.8%);}}
+.hero-scan{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(249,115,22,.07),transparent);animation:scan 6s linear infinite;pointer-events:none;}
+@keyframes scan{to{left:200%;}}
+.hero-accent-bar{position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(to bottom,var(--ore),var(--plum),transparent);}
+
+.page-hero-content{position:relative;z-index:2;padding:0 6vw 7vh;}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:clamp(.7rem,1.2vw,.9rem);letter-spacing:.3em;text-transform:uppercase;color:var(--ore);margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s .3s forwards;}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);line-height:.88;opacity:0;animation:fadeUp .9s .5s forwards;}
+.page-hero-title span.ore{color:var(--ore);}
+.page-hero-title span.ghost{-webkit-text-stroke:1px rgba(244,242,238,.18);color:transparent;display:block;}
+.page-hero-sub{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:clamp(1rem,1.8vw,1.3rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,242,238,.55);margin-top:1.4rem;opacity:0;animation:fadeUp .8s .75s forwards;}
+.breadcrumb{display:flex;align-items:center;gap:.6rem;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .2s forwards;}
+.breadcrumb a{color:var(--ore);text-decoration:none;}
+.breadcrumb span{color:rgba(244,242,238,.3);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* quick info pills floating over hero */
+.hero-pills{
+  position:absolute;bottom:0;right:6vw;
+  display:flex;gap:0;z-index:3;
+  opacity:0;animation:fadeUp .8s 1s forwards;
+}
+.hpill{
+  padding:1.2rem 2rem;
+  background:rgba(15,15,18,.75);
+  backdrop-filter:blur(14px);
+  border-top:2px solid var(--ore);
+  border-left:1px solid rgba(249,115,22,.12);
+  text-align:center;
+}
+.hpill:first-child{border-left:none;}
+.hpill-val{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--ore);line-height:1;}
+.hpill-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.25rem;}
+
+/* ===== SHARED ===== */
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ore);margin-bottom:1rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5.5vw,4.5rem);line-height:.9;letter-spacing:.02em;}
+.section-body{font-size:clamp(.88rem,1.2vw,1rem);line-height:1.8;color:rgba(244,242,238,.65);max-width:55ch;}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* ===== MAIN CONTACT GRID ===== */
+#contact-main{
+  background:var(--carbon);
+  padding:8rem 6vw;
+  display:grid;
+  grid-template-columns:1fr 1.6fr;
+  gap:4px;
+  align-items:stretch;
+}
+@media(max-width:900px){#contact-main{grid-template-columns:1fr;gap:3px;}}
+
+/* ---- LEFT: info panels stacked ---- */
+.info-stack{display:flex;flex-direction:column;gap:4px;}
+
+.info-block{
+  background:var(--steel);
+  padding:2.5rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .25s;
+  flex:1;
+}
+.info-block::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:0;
+  background:var(--ore);
+  transition:height .4s cubic-bezier(.25,.46,.45,.94);
+}
+.info-block:hover{background:var(--iron);}
+.info-block:hover::before{height:100%;}
+
+.info-block-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ore);margin-bottom:1.2rem;
+}
+
+/* director card */
+.director-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--plum),var(--blk));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:1.3rem;
+  color:var(--ore);border:2px solid var(--ore);
+  flex-shrink:0;
+  transition:transform .3s;
+}
+.info-block:hover .director-avatar{transform:scale(1.08);}
+.director-name{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:.06em;}
+.director-title{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.15rem;}
+
+.contact-detail-row{
+  display:flex;align-items:center;gap:1rem;
+  padding:.8rem 0;
+  border-bottom:1px solid rgba(244,242,238,.06);
+  transition:transform .2s,color .2s;
+  cursor:default;
+}
+.contact-detail-row:hover{transform:translateX(6px);}
+.contact-detail-row:last-child{border:none;}
+.contact-detail-icon{font-size:1.3rem;flex-shrink:0;}
+.contact-detail-lbl{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.15rem;}
+.contact-detail-val{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:.04em;}
+
+/* address block */
+.address-lines{margin-top:.8rem;}
+.address-line{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.35rem;font-weight:600;letter-spacing:.06em;
+  line-height:1.3;color:var(--white);
+}
+.address-sub{font-size:.82rem;color:rgba(244,242,238,.5);margin-top:.6rem;letter-spacing:.06em;}
+
+/* reg block */
+.reg-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem;}
+.reg-cell .rk{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.reg-cell .rv{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--ore);margin-top:.2rem;letter-spacing:.04em;}
+
+/* hours block */
+.hours-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.7rem 0;
+  border-bottom:1px solid rgba(244,242,238,.06);
+  font-family:'Barlow Condensed',sans-serif;font-size:.95rem;letter-spacing:.04em;
+}
+.hours-row:last-child{border:none;}
+.hours-day{color:rgba(244,242,238,.5);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;}
+.hours-time{color:var(--ore);}
+
+/* ---- RIGHT: FORM ---- */
+.form-panel{
+  background:var(--steel);
+  padding:3.5rem 3rem;
+  position:relative;overflow:hidden;
+}
+.form-panel::before{
+  content:'CONTACT';
+  font-family:'Bebas Neue',sans-serif;
+  font-size:14rem;line-height:1;
+  position:absolute;bottom:-2rem;right:-1rem;
+  color:rgba(249,115,22,.03);
+  pointer-events:none;letter-spacing:.06em;
+}
+
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);letter-spacing:.04em;line-height:.9;}
+.form-sub{font-size:.88rem;color:rgba(244,242,238,.5);margin-top:.7rem;margin-bottom:2.5rem;line-height:1.6;}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr;}}
+.form-full{grid-column:1/-1;}
+
+.form-group{display:flex;flex-direction:column;gap:.5rem;}
+.form-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);
+}
+.form-input,.form-textarea{
+  background:rgba(6,6,8,.5);
+  border:1px solid rgba(244,242,238,.1);
+  color:var(--white);
+  padding:.9rem 1.2rem;
+  font-family:'Barlow',sans-serif;font-size:.92rem;
+  transition:border-color .25s,box-shadow .25s,background .25s;
+  outline:none;
+  width:100%;
+}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(244,242,238,.2);}
+.form-input:focus,.form-textarea:focus{
+  border-color:var(--ore);
+  box-shadow:0 0 0 3px var(--ore-dim);
+  background:rgba(15,15,18,.7);
+}
+.form-textarea{resize:vertical;min-height:130px;}
+
+/* service selector */
+.service-select{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+  margin-top:.5rem;
+}
+@media(max-width:600px){.service-select{grid-template-columns:repeat(2,1fr);}}
+
+.svc-opt{
+  padding:.6rem .5rem;
+  background:rgba(6,6,8,.5);
+  border:1px solid rgba(244,242,238,.08);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(244,242,238,.5);
+  text-align:center;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s;
+  user-select:none;
+}
+.svc-opt:hover,.svc-opt.selected{
+  border-color:var(--ore);
+  color:var(--ore);
+  background:rgba(249,115,22,.08);
+}
+
+/* submit btn */
+.submit-btn{
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blk);background:var(--ore);
+  padding:1rem 2.4rem;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);
+  font-weight:700;
+  border:none;cursor:pointer;
+  transition:filter .2s,transform .15s;
+  margin-top:.5rem;
+}
+.submit-btn:hover{filter:brightness(1.15);transform:translateY(-2px);}
+.submit-btn svg{width:18px;height:18px;}
+
+.form-note{
+  font-size:.75rem;color:rgba(244,242,238,.3);
+  font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;
+  margin-top:.8rem;
+}
+
+/* quote strip inside form */
+.form-quote{
+  margin-top:2.5rem;
+  padding:1.4rem 1.6rem;
+  border-left:3px solid var(--ore);
+  background:rgba(249,115,22,.05);
+}
+.form-quote p{font-style:italic;font-size:.88rem;color:rgba(244,242,238,.55);line-height:1.65;}
+.form-quote cite{display:block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ore);margin-top:.6rem;font-style:normal;}
+
+/* ===== QUICK CONTACT CARDS ROW ===== */
+#quick-cards{
+  background:var(--blk);
+  padding:0 6vw;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+}
+@media(max-width:768px){#quick-cards{grid-template-columns:1fr;}}
+
+.qcard{
+  background:var(--steel);
+  padding:2.5rem 2rem;
+  display:flex;align-items:flex-start;gap:1.3rem;
+  position:relative;overflow:hidden;
+  transition:background .25s,transform .2s;
+  border-bottom:3px solid transparent;
+}
+.qcard:hover{background:var(--iron);border-bottom-color:var(--ore);transform:translateY(-3px);}
+.qcard-icon{font-size:2rem;flex-shrink:0;}
+.qcard-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ore);margin-bottom:.4rem;}
+.qcard-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.04em;}
+.qcard-val{font-size:.85rem;color:rgba(244,242,238,.55);margin-top:.25rem;line-height:1.5;}
+
+/* ===== ADDRESS / MAP PANEL ===== */
+#location{
+  background:var(--carbon);
+  padding:7rem 6vw;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6rem;
+  align-items:center;
+}
+@media(max-width:768px){#location{grid-template-columns:1fr;gap:3rem;}}
+
+.location-visual{
+  position:relative;
+  aspect-ratio:4/3;
+  background:var(--steel);
+  overflow:hidden;
+}
+.location-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(15,15,18,.6),rgba(15,15,18,.6)),
+    url('https://images.unsplash.com/photo-1524813686514-a57563d77965?w=900&q=75&fit=crop') center/cover;
+  transition:transform .5s ease;
+}
+.location-visual:hover .location-bg{transform:scale(1.05);}
+.location-pin{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;z-index:2;
+}
+.location-pin-dot{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--ore);margin:0 auto;
+  box-shadow:0 0 0 6px rgba(249,115,22,.25),0 0 0 14px rgba(249,115,22,.1);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 6px rgba(249,115,22,.25),0 0 0 14px rgba(249,115,22,.1);}50%{box-shadow:0 0 0 10px rgba(249,115,22,.18),0 0 0 22px rgba(249,115,22,.06);}}
+.location-pin-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ore);margin-top:.6rem;
+  background:rgba(6,6,8,.8);padding:.3rem .7rem;
+  backdrop-filter:blur(6px);
+}
+/* corner decoration */
+.location-visual::after{
+  content:'';
+  position:absolute;bottom:-8px;right:-8px;
+  width:60px;height:60px;
+  border-right:3px solid var(--ore);
+  border-bottom:3px solid var(--ore);
+  transition:width .3s,height .3s;
+}
+.location-visual:hover::after{width:90px;height:90px;}
+
+/* address text */
+.address-display .big-address{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  line-height:1;letter-spacing:.04em;
+  color:var(--white);
+}
+.address-display .big-address span{color:var(--ore);}
+.address-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-top:1.4rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blk);background:var(--ore);
+  padding:.5rem 1.2rem;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
+  font-weight:700;
+}
+
+/* ===== FOOTER ===== */
+footer{background:var(--blk);border-top:1px solid rgba(249,115,22,.2);padding:3rem 6vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;}
+.footer-logo span{color:var(--ore);}
+.footer-tagline{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
+.footer-reg{font-size:.7rem;color:rgba(244,242,238,.3);text-align:right;font-family:'Barlow Condensed',sans-serif;letter-spacing:.05em;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--blk);}
+::-webkit-scrollbar-thumb{background:var(--ore);border-radius:2px;}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cdot"></div>
+<div class="cursor-ring" id="cring"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">BNMS <span>OOR</span> PRO</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="tel:0734280540" class="nav-cta">📱 073 428 0540</a>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<section id="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-accent-bar"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span>Contact</span>
+    </div>
+    <p class="hero-eyebrow">Black Women Owned · Gamagara Municipality · Northern Cape · Est. 2021</p>
+    <h1 class="page-hero-title">
+      <span class="ore">Talk To</span>
+      <span class="ghost">Us Today</span>
+    </h1>
+    <p class="page-hero-sub">073 428 0540 · oor.boniswa@gmail.com · Dibeng 8463</p>
+  </div>
+  <div class="hero-pills">
+    <div class="hpill">
+      <div class="hpill-val">073 428 0540</div>
+      <div class="hpill-lbl">Call / WhatsApp</div>
+    </div>
+    <div class="hpill">
+      <div class="hpill-val">MON–FRI</div>
+      <div class="hpill-lbl">08:00 – 17:00</div>
+    </div>
+    <div class="hpill">
+      <div class="hpill-val">2 DAYS</div>
+      <div class="hpill-lbl">Reply Time</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>Get In Touch</span><span>073 428 0540</span><span>oor.boniswa@gmail.com</span><span>Dibeng 8463</span><span>Northern Cape</span><span>We Deliver Good Services</span><span>Civil Engineering</span><span>Construction</span><span>Cleaning</span><span>Transport</span>
+    <span>Get In Touch</span><span>073 428 0540</span><span>oor.boniswa@gmail.com</span><span>Dibeng 8463</span><span>Northern Cape</span><span>We Deliver Good Services</span><span>Civil Engineering</span><span>Construction</span><span>Cleaning</span><span>Transport</span>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTACT GRID ===== -->
+<section id="contact-main">
+
+  <!-- LEFT: info panels -->
+  <div class="info-stack reveal-left">
+
+    <!-- Director -->
+    <div class="info-block">
+      <div class="info-block-label">Main Contact</div>
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem;">
+        <div class="director-avatar">BO</div>
+        <div>
+          <div class="director-name">Boniswa Oor</div>
+          <div class="director-title">Director · BNMS OOR PRO (PTY) LTD</div>
+        </div>
+      </div>
+      <div class="contact-detail-row">
+        <span class="contact-detail-icon">📱</span>
+        <div>
+          <span class="contact-detail-lbl">Mobile / WhatsApp</span>
+          <span class="contact-detail-val">073 428 0540</span>
+        </div>
+      </div>
+      <div class="contact-detail-row">
+        <span class="contact-detail-icon">✉️</span>
+        <div>
+          <span class="contact-detail-lbl">Email Address</span>
+          <span class="contact-detail-val">oor.boniswa@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="info-block">
+      <div class="info-block-label">Physical Address</div>
+      <div class="address-lines">
+        <div class="address-line">HOUSE NO 2692</div>
+        <div class="address-line">REMFORCEMARK</div>
+        <div class="address-line" style="color:var(--ore);">DIBENG 8463</div>
+      </div>
+      <div class="address-sub">Gamagara Municipality · Kathu / Dibeng<br>Northern Cape, South Africa</div>
+    </div>
+
+    <!-- Registration -->
+    <div class="info-block">
+      <div class="info-block-label">Company Registration</div>
+      <div class="reg-grid-2">
+        <div class="reg-cell"><div class="rk">Registration</div><div class="rv">2021/151894/07</div></div>
+        <div class="reg-cell"><div class="rk">Tax Number</div><div class="rv">9309483247</div></div>
+        <div class="reg-cell"><div class="rk">CSD Number</div><div class="rv">MAAA1178478</div></div>
+        <div class="reg-cell"><div class="rk">CIDB Number</div><div class="rv">10325406</div></div>
+      </div>
+      <div style="margin-top:1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.12em;color:var(--muted);">Established 16 December 2021 · Black Women Owned</div>
+    </div>
+
+    <!-- Hours -->
+    <div class="info-block">
+      <div class="info-block-label">Office Hours</div>
+      <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">08:00 – 17:00</span></div>
+      <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">By Appointment</span></div>
+      <div class="hours-row"><span class="hours-day">Sunday</span><span style="color:var(--muted);">Closed</span></div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: form -->
+  <div class="form-panel reveal-right" style="transition-delay:.15s">
+    <p class="section-label">Send A Message</p>
+    <h2 class="form-title">Let's Start<br><span style="color:var(--ore)">A Conversation.</span></h2>
+    <p class="form-sub">Tell us about your project or inquiry — we'll get back to you within 2 working days.</p>
+
+    <form id="contactForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="e.g. 073 428 0540">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company / Organisation</label>
+          <input class="form-input" type="text" placeholder="Optional">
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Service You Need</label>
+          <div class="service-select" id="svcSelect">
+            <div class="svc-opt" data-svc="civil">🏗️ Civil Eng.</div>
+            <div class="svc-opt" data-svc="building">🏢 Building</div>
+            <div class="svc-opt" data-svc="plumbing">🔧 Plumbing</div>
+            <div class="svc-opt" data-svc="steel">⚙️ Steel Work</div>
+            <div class="svc-opt" data-svc="cleaning">🧹 Cleaning</div>
+            <div class="svc-opt" data-svc="transport">🚛 Transport</div>
+            <div class="svc-opt" data-svc="catering">🍽️ Catering</div>
+            <div class="svc-opt" data-svc="welding">🔥 Welding</div>
+          </div>
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Your Message / Project Details</label>
+          <textarea class="form-textarea" placeholder="Describe your project, location, timeline or any questions..."></textarea>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;">
+        <button type="submit" class="submit-btn">
+          Send Message
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <span class="form-note">We reply within 2 working days</span>
+      </div>
+
+      <div id="formSuccess" style="display:none;margin-top:1.5rem;padding:1.2rem;background:rgba(249,115,22,.1);border:1px solid var(--ore);">
+        <p style="font-family:'Barlow Condensed',sans-serif;color:var(--ore);letter-spacing:.08em;">✓ MESSAGE SENT — We'll be in touch soon!</p>
+      </div>
+    </form>
+
+    <div class="form-quote">
+      <p>"We make sure our work is done as the customer require it and give quality and professional services."</p>
+      <cite>— BNMS OOR PRO Company Profile</cite>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== QUICK CONTACT CARDS ===== -->
+<section id="quick-cards">
+  <div class="qcard reveal" style="transition-delay:.0s">
+    <span class="qcard-icon">⏰</span>
+    <div>
+      <div class="qcard-label">Office Hours</div>
+      <div class="qcard-title">Mon – Fri</div>
+      <div class="qcard-val">08:00 – 17:00<br>Sat by appointment</div>
+    </div>
+  </div>
+  <div class="qcard reveal" style="transition-delay:.1s">
+    <span class="qcard-icon">📱</span>
+    <div>
+      <div class="qcard-label">Call or WhatsApp</div>
+      <div class="qcard-title">073 428 0540</div>
+      <div class="qcard-val">Boniswa Oor · Director</div>
+    </div>
+  </div>
+  <div class="qcard reveal" style="transition-delay:.2s">
+    <span class="qcard-icon">✉️</span>
+    <div>
+      <div class="qcard-label">Email Direct</div>
+      <div class="qcard-title" style="font-size:.95rem;">oor.boniswa@gmail.com</div>
+      <div class="qcard-val">Response within 2 days</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section id="location">
+  <div class="location-visual reveal-left">
+    <div class="location-bg"></div>
+    <div class="location-pin">
+      <div class="location-pin-dot"></div>
+      <div class="location-pin-label">Dibeng 8463 · Northern Cape</div>
+    </div>
+  </div>
+
+  <div class="address-display reveal-right" style="transition-delay:.2s">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title">Our<br><span style="color:var(--ore)">Location</span></h2>
+    <div style="margin-top:2rem;">
+      <div class="big-address">HOUSE NO <span>2692</span></div>
+      <div class="big-address">REMFORCEMARK</div>
+      <div class="big-address"><span>DIBENG 8463</span></div>
+    </div>
+    <p style="font-size:.9rem;color:rgba(244,242,238,.5);margin-top:1rem;line-height:1.7;letter-spacing:.04em;">Gamagara Municipality · Kathu / Dibeng<br>Northern Cape, South Africa</p>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem;">
+      <span class="address-badge">📍 Gamagara Municipality</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid rgba(249,115,22,.35);color:var(--ore);background:rgba(249,115,22,.06);">Northern Cape</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">BNMS <span>OOR</span> PRO</div>
+    <div class="footer-tagline" style="margin-top:.4rem;">Black Women Owned · Engineering · Construction · Northern Cape</div>
+  </div>
+  <div class="footer-reg">
+    © BNMS OOR PRO (PTY) LTD<br>
+    REG: 2021/151894/07 · TAX: 9309483247<br>
+    CIDB: 10325406 · CSD: MAAA1178478
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function anim(){dot.style.left=mx+'px';dot.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+
+/* cursor ring expand */
+document.querySelectorAll('.info-block,.qcard,.form-input,.form-textarea,.svc-opt,.submit-btn,.location-visual').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='58px';ring.style.height='58px';ring.style.borderColor='var(--ore)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';});
+});
+
+/* NAV scroll */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+
+/* SERVICE SELECTOR toggle */
+document.querySelectorAll('.svc-opt').forEach(btn=>{
+  btn.addEventListener('click',()=>btn.classList.toggle('selected'));
+});
+
+/* FORM submit feedback */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display='block';
+  this.querySelectorAll('.form-input,.form-textarea').forEach(f=>f.value='');
+  document.querySelectorAll('.svc-opt').forEach(b=>b.classList.remove('selected'));
+  setTimeout(()=>document.getElementById('formSuccess').style.display='none',5000);
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
