@@ -85,7 +85,7 @@ body:hover .cursor-ring { border-color: var(--ore); }
     /* dark coal overlay */
     linear-gradient(175deg, rgba(6,6,8,.0) 0%, rgba(6,6,8,.55) 40%, rgba(6,6,8,.97) 100%),
     /* unsplash construction site */
-    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80&fit=crop') center/cover no-repeat;
+    url('./assets/hero.png') center/cover no-repeat;
   transform: scale(1.04);
   animation: heroZoom 18s ease-in-out infinite alternate;
 }
@@ -476,14 +476,14 @@ section { position: relative; overflow: hidden; }
 .svc-card:hover .svc-desc { max-height: 80px; opacity: 1; }
 
 /* individual service BGs (Unsplash) */
-.bg-civil     { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=75&fit=crop'); }
-.bg-build     { background-image: url('https://images.unsplash.com/photo-1590725140246-20acddc1ec6d?w=900&q=75&fit=crop'); }
-.bg-plumb     { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=75&fit=crop'); }
-.bg-steel     { background-image: url('https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=900&q=75&fit=crop'); }
-.bg-clean     { background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=75&fit=crop'); }
-.bg-transport { background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=75&fit=crop'); }
-.bg-accom     { background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=75&fit=crop'); }
-.bg-weld      { background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=900&q=75&fit=crop'); }
+.bg-civil     { background-image: url('./assets/civil.png'); }
+.bg-build     { background-image: url('./assets/civil2.png'); }
+.bg-plumb     { background-image: url('./assets/plumbing.png'); }
+.bg-steel     { background-image: url('./assets/steel.png'); }
+.bg-clean     { background-image: url('./assets/cleaning.png'); }
+.bg-transport { background-image: url('./assets/transport.png'); }
+.bg-accom     { background-image: url('./assets/construct2.png'); }
+.bg-weld      { background-image: url('./assets/steel2.png'); }
 
 /* =============================
    MISSION / VISION  (SPLIT SCREEN)
@@ -820,7 +820,7 @@ nav.scrolled {
       <span class="ore">BNMS</span>
       <span class="ghost">OOR PRO</span>
     </h1>
-    <p class="hero-sub">Civil Engineering · Construction · Plumbing · Welding · Transport · Cleaning · Catering</p>
+    <p class="hero-sub">Civil Engineering · Construction · Plumbing · Welding · Transport · Cleaning · Road Maintenance · Waste Removal · Waste Management</p>
     <div class="hero-badges">
       <span class="badge">REG: 2021/151894/07</span>
       <span class="badge">CIDB: 10325406</span>
@@ -852,8 +852,8 @@ nav.scrolled {
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Accommodation &amp; Catering</span><span>Black Women Owned</span><span>Northern Cape</span>
-    <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Accommodation &amp; Catering</span><span>Black Women Owned</span><span>Northern Cape</span>
+    <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Road Maintenance</span><span>Waste Removal</span><span>Waste Management</span><span>Black Women Owned</span><span>Northern Cape</span>
+    <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Road Maintenance</span><span>Waste Removal</span><span>Waste Management</span><span>Black Women Owned</span><span>Northern Cape</span>
   </div>
 </div>
 
@@ -861,7 +861,7 @@ nav.scrolled {
 <section id="about">
   <div class="reveal-left">
     <div class="about-img-wrap">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80&fit=crop" alt="Construction site">
+      <img src="assets/civil4.png" alt="Construction site">
     </div>
   </div>
   <div class="about-text reveal">
@@ -979,27 +979,27 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 7. ACCOMMODATION -->
+    <!-- 7. ROAD MAINTENANCE & WASTE (formerly Accommodation & Catering) -->
     <div class="svc-card">
       <div class="svc-bg bg-accom"></div>
       <div class="svc-line"></div>
       <div class="svc-content">
-        <span class="svc-icon">🍽️</span>
+        <span class="svc-icon">🛣️</span>
         <div class="svc-num">07</div>
-        <div class="svc-title">Accommodation &amp; Catering</div>
-        <div class="svc-desc">On-site &amp; Remote Hospitality Solutions</div>
+        <div class="svc-title">Road Maintenance</div>
+        <div class="svc-desc">Pothole Repair · Asphalt Works · Gravel Road Grading · Stormwater Management</div>
       </div>
     </div>
 
-    <!-- 8. WELDING -->
+    <!-- 8. WELDING & WASTE REMOVAL (renamed & expanded) -->
     <div class="svc-card">
       <div class="svc-bg bg-weld"></div>
       <div class="svc-line"></div>
       <div class="svc-content">
-        <span class="svc-icon">🔥</span>
+        <span class="svc-icon">♻️</span>
         <div class="svc-num">08</div>
-        <div class="svc-title">Welding</div>
-        <div class="svc-desc">Steel Fabrication · Custom Frames · Gates &amp; Structures</div>
+        <div class="svc-title">Waste Removal & Management</div>
+        <div class="svc-desc">Hazardous & General Waste · Recycling · Skip Hire · Environmental Compliance</div>
       </div>
     </div>
 
