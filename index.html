@@ -9,16 +9,17 @@
 <style>
 /* ===== DESIGN SYSTEM ===== */
 :root {
-  --blk: #060608;
-  --carbon: #0f0f12;
-  --steel: #1a1a22;
-  --ore: #f97316;
-  --ore-glow: rgba(249,115,22,0.35);
-  --ore-dim: rgba(249,115,22,0.12);
+  --blk: #040608;
+  --carbon: #080d12;
+  --steel: #0f1820;
+  --ore: #38bdf8;
+  --ore-glow: rgba(56,189,248,0.35);
+  --ore-dim: rgba(56,189,248,0.12);
   --white: #f4f2ee;
-  --muted: #8a8a96;
-  --plum: #4a1770;
-  --plum-glow: rgba(74,23,112,0.4);
+  --muted: #8a9aaa;
+  --plum: #0c1a2e;
+  --plum-glow: rgba(12,26,46,0.7);
+  --pink: #f9a8d4;
   --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 }
 
@@ -61,7 +62,7 @@ body::before {
 }
 .cursor-ring {
   width: 36px; height: 36px;
-  border: 1.5px solid rgba(249,115,22,.5);
+  border: 1.5px solid rgba(56,189,248,.5);
   border-radius: 50%;
   transition: width .2s, height .2s, border-color .2s;
 }
@@ -82,9 +83,7 @@ body:hover .cursor-ring { border-color: var(--ore); }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    /* dark coal overlay */
-    linear-gradient(175deg, rgba(6,6,8,.0) 0%, rgba(6,6,8,.55) 40%, rgba(6,6,8,.97) 100%),
-    /* unsplash construction site */
+    linear-gradient(175deg, rgba(4,6,8,.0) 0%, rgba(4,6,8,.55) 40%, rgba(4,6,8,.97) 100%),
     url('./assets/hero.png') center/cover no-repeat;
   transform: scale(1.04);
   animation: heroZoom 18s ease-in-out infinite alternate;
@@ -95,23 +94,23 @@ body:hover .cursor-ring { border-color: var(--ore); }
   to   { transform: scale(1.12) translateX(1%); }
 }
 
-/* orange scan line that passes over hero */
+/* sky-blue scan line that passes over hero */
 .hero-scan {
   position: absolute;
   top: 0; left: -100%;
   width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(249,115,22,.07), transparent);
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,.07), transparent);
   animation: scan 6s linear infinite;
   pointer-events: none;
 }
 @keyframes scan { to { left: 200%; } }
 
-/* diagonal orange bar top-left */
+/* diagonal blue→pink bar top-left */
 .hero-accent-bar {
   position: absolute;
   top: 0; left: 0;
   width: 5px; height: 100%;
-  background: linear-gradient(to bottom, var(--ore), var(--plum), transparent);
+  background: linear-gradient(to bottom, var(--ore), var(--pink), transparent);
 }
 
 .hero-content {
@@ -141,7 +140,7 @@ body:hover .cursor-ring { border-color: var(--ore); }
 }
 .hero-title span.ore { color: var(--ore); }
 .hero-title span.ghost {
-  -webkit-text-stroke: 1px rgba(244,242,238,.18);
+  -webkit-text-stroke: 1px rgba(249,168,212,.22);
   color: transparent;
   display: block;
 }
@@ -173,14 +172,14 @@ body:hover .cursor-ring { border-color: var(--ore); }
   letter-spacing: .18em;
   text-transform: uppercase;
   padding: .45rem 1.1rem;
-  border: 1px solid rgba(249,115,22,.35);
+  border: 1px solid rgba(56,189,248,.35);
   color: var(--ore);
   border-radius: 2px;
-  background: rgba(249,115,22,.06);
+  background: rgba(56,189,248,.06);
   backdrop-filter: blur(6px);
   transition: background .2s, border-color .2s;
 }
-.badge:hover { background: rgba(249,115,22,.18); border-color: var(--ore); }
+.badge:hover { background: rgba(56,189,248,.18); border-color: var(--ore); }
 
 .hero-cta {
   display: inline-flex;
@@ -216,11 +215,11 @@ body:hover .cursor-ring { border-color: var(--ore); }
 }
 .hstat {
   padding: 1.4rem 2.2rem;
-  background: rgba(15,15,18,.7);
+  background: rgba(8,13,18,.7);
   backdrop-filter: blur(14px);
   border-top: 2px solid var(--ore);
   text-align: center;
-  border-left: 1px solid rgba(249,115,22,.15);
+  border-left: 1px solid rgba(56,189,248,.15);
 }
 .hstat:first-child { border-left: none; }
 .hstat-num {
@@ -298,7 +297,7 @@ section { position: relative; overflow: hidden; }
 }
 .about-img-wrap:hover img { filter: grayscale(0%) contrast(1); }
 
-/* orange corner decoration */
+/* sky-blue corner decoration */
 .about-img-wrap::before {
   content:'';
   position: absolute;
@@ -315,7 +314,7 @@ section { position: relative; overflow: hidden; }
   content:'EST. 2021';
   font-family:'Bebas Neue',sans-serif;
   font-size: 5rem;
-  color: rgba(249,115,22,.07);
+  color: rgba(56,189,248,.07);
   position: absolute;
   bottom: 10px; right: 10px;
   letter-spacing:.1em;
@@ -342,7 +341,7 @@ section { position: relative; overflow: hidden; }
 .reg-item {
   background: var(--steel);
   padding: .8rem 1rem;
-  border-top: 2px solid rgba(249,115,22,.3);
+  border-top: 2px solid rgba(56,189,248,.3);
   font-family: 'Barlow Condensed', sans-serif;
 }
 .reg-item .k { font-size: .6rem; letter-spacing:.2em; text-transform:uppercase; color: var(--muted); }
@@ -409,15 +408,15 @@ section { position: relative; overflow: hidden; }
 .svc-card::after {
   content:'';
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(6,6,8,.92) 0%, rgba(6,6,8,.3) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(4,6,8,.92) 0%, rgba(4,6,8,.3) 50%, transparent 100%);
   z-index: 1;
   transition: background .3s;
 }
 .svc-card:hover::after {
-  background: linear-gradient(to top, rgba(6,6,8,.97) 0%, rgba(6,6,8,.5) 60%, rgba(74,23,112,.25) 100%);
+  background: linear-gradient(to top, rgba(4,6,8,.97) 0%, rgba(4,6,8,.5) 60%, rgba(56,189,248,.08) 100%);
 }
 
-/* orange line that reveals on hover */
+/* sky-blue line that reveals on hover */
 .svc-line {
   position: absolute;
   bottom: 0; left: 0;
@@ -515,7 +514,7 @@ section { position: relative; overflow: hidden; }
   line-height: 1;
   position: absolute;
   top: -2rem; right: -2rem;
-  color: rgba(249,115,22,.04);
+  color: rgba(56,189,248,.04);
   pointer-events: none;
 }
 .mv-panel.dark::before { content: '01'; }
@@ -548,7 +547,7 @@ section { position: relative; overflow: hidden; }
 ============================= */
 #contact {
   background:
-    linear-gradient(to right, rgba(6,6,8,.92) 0%, rgba(6,6,8,.75) 50%, rgba(6,6,8,.96) 100%),
+    linear-gradient(to right, rgba(4,6,8,.92) 0%, rgba(4,6,8,.75) 50%, rgba(4,6,8,.96) 100%),
     url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=60&fit=crop') center/cover fixed;
   padding: 8rem 6vw;
   display: grid;
@@ -559,9 +558,9 @@ section { position: relative; overflow: hidden; }
 @media(max-width:768px){ #contact { grid-template-columns:1fr; gap:3rem; } }
 
 .contact-card {
-  background: rgba(15,15,18,.6);
+  background: rgba(8,13,18,.6);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(249,115,22,.2);
+  border: 1px solid rgba(56,189,248,.2);
   padding: 3rem;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
   transition: border-color .3s, box-shadow .3s;
@@ -598,7 +597,7 @@ section { position: relative; overflow: hidden; }
 ============================= */
 footer {
   background: var(--blk);
-  border-top: 1px solid rgba(249,115,22,.2);
+  border-top: 1px solid rgba(56,189,248,.2);
   padding: 3rem 6vw;
   display: flex;
   justify-content: space-between;
@@ -663,10 +662,10 @@ nav {
   transition: background .4s, padding .3s;
 }
 nav.scrolled {
-  background: rgba(6,6,8,.88);
+  background: rgba(4,6,8,.88);
   backdrop-filter: blur(18px);
   padding: .9rem 6vw;
-  border-bottom: 1px solid rgba(249,115,22,.15);
+  border-bottom: 1px solid rgba(56,189,248,.15);
 }
 
 .nav-logo {
@@ -711,7 +710,7 @@ nav.scrolled {
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--ore);
-  border: 1px solid rgba(249,115,22,.5);
+  border: 1px solid rgba(56,189,248,.5);
   padding: .5rem 1.2rem;
   text-decoration: none;
   transition: background .2s, color .2s;
@@ -750,7 +749,7 @@ nav.scrolled {
 #callout {
   background:
     linear-gradient(135deg, var(--plum) 0%, var(--blk) 60%),
-    radial-gradient(ellipse at 20% 50%, rgba(249,115,22,.15) 0%, transparent 60%);
+    radial-gradient(ellipse at 20% 50%, rgba(56,189,248,.12) 0%, transparent 60%);
   padding: 7rem 6vw;
   text-align: center;
   position: relative;
@@ -775,7 +774,7 @@ nav.scrolled {
   letter-spacing: .04em;
   line-height: .9;
 }
-.callout-title .ore { color: var(--ore); }
+.callout-title .ore { color: var(--pink); }
 
 .callout-divider {
   width: 80px; height: 3px;
@@ -866,7 +865,7 @@ nav.scrolled {
   </div>
   <div class="about-text reveal">
     <p class="section-label">About The Company</p>
-    <h2 class="section-title">Built to<br>Empower.<br><span style="color:var(--ore)">Built to<br>Deliver.</span></h2>
+    <h2 class="section-title">Built to<br>Empower.<br><span style="color:var(--pink)">Built to<br>Deliver.</span></h2>
     <blockquote class="quote">
       "As black women I saw potential within our community that need to be empowered by companies that has the same potential with passion."
       <br><strong style="color:rgba(244,242,238,.8);font-style:normal;font-size:.85rem;margin-top:.5rem;display:block;">— Boniswa Oor, Director</strong>
@@ -979,7 +978,7 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 7. ROAD MAINTENANCE & WASTE (formerly Accommodation & Catering) -->
+    <!-- 7. ROAD MAINTENANCE & WASTE -->
     <div class="svc-card">
       <div class="svc-bg bg-accom"></div>
       <div class="svc-line"></div>
@@ -991,7 +990,7 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 8. WELDING & WASTE REMOVAL (renamed & expanded) -->
+    <!-- 8. WELDING & WASTE REMOVAL -->
     <div class="svc-card">
       <div class="svc-bg bg-weld"></div>
       <div class="svc-line"></div>
@@ -1014,7 +1013,7 @@ nav.scrolled {
     <p class="section-body" style="margin-top:1.6rem;">
       BNMS OOR PRO is to provide sustainable solutions through integrated maintenance and services to the best of our ability — giving our customers the quality service they deserve, now and in the future.
     </p>
-    <div style="margin-top:2.5rem;padding:1.5rem;border:1px solid rgba(249,115,22,.25);background:rgba(249,115,22,.05);">
+    <div style="margin-top:2.5rem;padding:1.5rem;border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.05);">
       <p style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ore);letter-spacing:.08em;">#WE DELIVER GOOD SERVICES</p>
     </div>
   </div>
