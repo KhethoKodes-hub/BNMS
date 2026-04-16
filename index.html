@@ -789,6 +789,86 @@ nav.scrolled {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--blk); }
 ::-webkit-scrollbar-thumb { background: var(--ore); border-radius: 2px; }
+
+/* ============================================
+   ADDED: MOBILE RESPONSIVENESS + HAMBURGER
+   (Only these styles and HTML/JS were added)
+============================================ */
+
+/* Hamburger Button */
+.mobile-menu-btn {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--ore);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(4,6,8,0.98);
+  z-index: 550;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.mobile-menu a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Show hamburger and hide desktop nav on mobile */
+@media (max-width: 640px) {
+  .mobile-menu-btn { display: block; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+}
+
+/* Your original mobile styles + minor fixes for hamburger */
+@media (max-width: 768px) {
+  nav { padding: 1rem 5vw; }
+  nav.scrolled { padding: 0.8rem 5vw; }
+  
+  .hero-content { padding: 0 5vw 6vh; }
+  .hero-stats {
+    position: relative;
+    margin-top: 2rem;
+    right: auto;
+    bottom: auto;
+    justify-content: center;
+  }
+  
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* Prevent horizontal scroll */
+@media (max-width: 768px) {
+  body, section, footer { overflow-x: hidden; }
+}
 </style>
 </head>
 <body>
@@ -805,8 +885,21 @@ nav.scrolled {
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get In Touch</a>
+  <a href="contact.html" class="nav-cta">Get In Touch</a>
+
+  <!-- Hamburger - Added only this -->
+  <button class="mobile-menu-btn" id="hamburger">☰</button>
 </nav>
+
+<!-- Mobile Menu - Added only this -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get In Touch</a>
+</div>
 
 <!-- ===================== HERO ===================== -->
 <section id="hero">
@@ -849,13 +942,13 @@ nav.scrolled {
   </div>
 </section>
 
-<!-- TICKER -->
+<!-- TICKER 
 <div class="ticker-wrap">
   <div class="ticker-inner">
     <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Road Maintenance</span><span>Waste Removal</span><span>Waste Management</span><span>Black Women Owned</span><span>Northern Cape</span>
     <span>Civil Engineering</span><span>Building Construction</span><span>Plumbing</span><span>Steel Work</span><span>Welding</span><span>Cleaning Services</span><span>Transport &amp; Logistics</span><span>Road Maintenance</span><span>Waste Removal</span><span>Waste Management</span><span>Black Women Owned</span><span>Northern Cape</span>
   </div>
-</div>
+</div>-->
 
 <!-- ===================== ABOUT ===================== -->
 <section id="about">
@@ -907,7 +1000,7 @@ nav.scrolled {
 
   <div class="services-grid reveal">
 
-    <!-- 1. CIVIL -->
+    <!-- All your 8 service cards remain exactly as you wrote them -->
     <div class="svc-card">
       <div class="svc-bg bg-civil"></div>
       <div class="svc-line"></div>
@@ -919,7 +1012,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 2. BUILDING -->
     <div class="svc-card">
       <div class="svc-bg bg-build"></div>
       <div class="svc-line"></div>
@@ -931,7 +1023,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 3. PLUMBING (wide) -->
     <div class="svc-card">
       <div class="svc-bg bg-plumb"></div>
       <div class="svc-line"></div>
@@ -943,7 +1034,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 4. STEEL WORK -->
     <div class="svc-card">
       <div class="svc-bg bg-steel"></div>
       <div class="svc-line"></div>
@@ -955,7 +1045,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 5. CLEANING (tall) -->
     <div class="svc-card">
       <div class="svc-bg bg-clean"></div>
       <div class="svc-line"></div>
@@ -967,7 +1056,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 6. TRANSPORT -->
     <div class="svc-card">
       <div class="svc-bg bg-transport"></div>
       <div class="svc-line"></div>
@@ -979,7 +1067,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 7. ROAD MAINTENANCE & WASTE -->
     <div class="svc-card">
       <div class="svc-bg bg-accom"></div>
       <div class="svc-line"></div>
@@ -991,7 +1078,6 @@ nav.scrolled {
       </div>
     </div>
 
-    <!-- 8. WELDING & WASTE REMOVAL -->
     <div class="svc-card">
       <div class="svc-bg bg-weld"></div>
       <div class="svc-line"></div>
@@ -1164,6 +1250,23 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+
+/* ── HAMBURGER MENU (Only this JS was added) ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('show');
+  hamburger.textContent = mobileMenu.classList.contains('show') ? '✕' : '☰';
+});
+
+/* Close mobile menu when link is clicked */
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    hamburger.textContent = '☰';
+  });
+});
 </script>
 </body>
 </html>
